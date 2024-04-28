@@ -41,6 +41,7 @@ export default {
 
   pages: {
     signIn: "/auth/login",
+    signOut: "/",
   },
 
   events: {
@@ -57,15 +58,23 @@ export default {
   },
 
   callbacks: {
-    // async signIn({ user }) {
-    //   const isExist = await getUserById(user.id!);
+    async signIn({ user, account }) {
+      if (account?.provider !== "credentials") return true;
 
-    //   if(!isExist || !isExist.emailVerified){
-    //     return false
-    //   }
+      const isExist = await getUserById(user.id!);
 
-    //   return true;
-    // },
+      if (
+        !isExist ||
+        !isExist.emailVerified ||
+        !isExist.password ||
+        !isExist.email
+      ) {
+        return false;
+      }
+
+      // Remaining for 2FA authentication
+      return true;
+    },
 
     async jwt({ token }) {
       if (!token.sub) return token;

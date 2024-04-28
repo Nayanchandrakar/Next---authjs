@@ -3,14 +3,14 @@
  * to not-authenticated users
  * @type {string[]}
  */
-export const publicRoutes = ["/", "/about"];
+export const publicRoutes = ["/", "/about", "/auth/new-verification"];
 
 /**
  * These Api Routes are for only authentication purpose
  * A non-authenticated user can acces it without any proble
  * @type {string[]}
  */
-export const authRoutes = ["/auth/login", "/auth/register"];
+export const authRoutes = ["/auth/login", "/auth/register", "/auth/reset"];
 
 /**
  * This route is accessible to use api freely

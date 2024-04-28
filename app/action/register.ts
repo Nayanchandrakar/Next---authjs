@@ -7,7 +7,9 @@ import {
   registerFormSchema,
   registerFormSchemeType,
 } from "@/schema/form-schema";
-import { getUserByEmail } from "./data";
+import { getUserByEmail } from "@/app/action/data";
+import { generateVerificationToken } from "@/app/action/token";
+import { sendVerificationEmail } from "@/app/action/email";
 
 export const registerAction = async (formData: registerFormSchemeType) => {
   const validateFields = registerFormSchema.safeParse(formData);
@@ -33,5 +35,14 @@ export const registerAction = async (formData: registerFormSchemeType) => {
       password: hashedPassword,
     },
   });
-  return { success: "An verification email is sent to your email" };
+
+  // generate a verifictation token
+  const verificationToken = await generateVerificationToken(email);
+
+  await sendVerificationEmail(
+    verificationToken?.token!,
+    verificationToken?.email!
+  );
+
+  return { success: "An verification token is sent your email!" };
 };

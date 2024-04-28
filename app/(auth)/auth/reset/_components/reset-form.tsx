@@ -22,9 +22,9 @@ import { loginAction } from "@/app/action/login";
 import { toast } from "sonner";
 import Link from "next/link";
 
-interface LoginFormProps {}
+interface ResetFormProps {}
 
-const LoginForm: FC<LoginFormProps> = ({}) => {
+const ResetForm: FC<ResetFormProps> = ({}) => {
   const [isPending, setIsPending] = useTransition();
 
   const form = useForm<loginFormSchemaType>({
@@ -48,10 +48,10 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
 
   return (
     <CardWrapper
-      Heading="Authentication "
-      description="Welcome back"
-      backButtonHref="/auth/register"
-      backButtonLabel="don't have an account?"
+      Heading="Reset password"
+      description="Forgot your password?"
+      backButtonHref="/auth/login"
+      backButtonLabel="Back to login"
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -73,34 +73,14 @@ const LoginForm: FC<LoginFormProps> = ({}) => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="password"
-            disabled={isPending}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="******" {...field} />
-                </FormControl>
 
-                <Button asChild size="sm" className="px-0" variant="link">
-                  <Link href="/auth/reset">Forgot password</Link>
-                </Button>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <Button disabled={isPending} className="w-full" type="submit">
-            Login
+            Send reset email
           </Button>
         </form>
       </Form>
-
-      <SocialLoginButton />
     </CardWrapper>
   );
 };
 
-export default LoginForm;
+export default ResetForm;

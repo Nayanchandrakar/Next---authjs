@@ -28,27 +28,3 @@ export const getUserById = async (id: string): Promise<User | null> => {
     return null;
   }
 };
-
-// export const getVerificationTokenByEmail = async(): Promise<verificationToken | null> => {
-//   try {
-//     const res = await db?.verificationToken?.findUnique({
-//       where:{
-//         email;
-//       }
-//     })
-//   } catch (error) {
-//     return null
-//   }
-// }
-
-// export const generateTokenByEmail = async (
-//   email: string
-// ): Promise<verificationToken | null> => {
-//   try {
-
-//     const isExist =
-
-//   } catch (error) {
-//     return null;
-//   }
-// };
