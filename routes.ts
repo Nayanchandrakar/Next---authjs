@@ -10,7 +10,12 @@ export const publicRoutes = ["/", "/about", "/auth/new-verification"];
  * A non-authenticated user can acces it without any proble
  * @type {string[]}
  */
-export const authRoutes = ["/auth/login", "/auth/register", "/auth/reset"];
+export const authRoutes = [
+  "/auth/login",
+  "/auth/register",
+  "/auth/reset",
+  "/auth/new-password",
+];
 
 /**
  * This route is accessible to use api freely

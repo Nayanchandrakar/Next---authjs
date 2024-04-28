@@ -6,8 +6,6 @@ export const verifyToken = async (token: string) => {
   try {
     const tokenData = await getVerificationByToken(token);
 
-    console.log(token, tokenData);
-
     if (!tokenData) {
       return { error: "Token does not Exist" };
     }

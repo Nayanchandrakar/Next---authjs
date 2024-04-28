@@ -45,6 +45,7 @@ export const loginAction = async (formData: loginFormSchemaType) => {
           return { error: "Something went wrong!" };
       }
     }
+
     throw error;
   }
   return { error: "Something went wrong!" };

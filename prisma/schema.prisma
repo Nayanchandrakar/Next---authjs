@@ -60,3 +60,11 @@ model verificationToken {
 
   @@unique([token , email])
 }
+model passwordVerificationToken {
+  id String @id @default(cuid())
+  token String  @unique
+  email String 
+  expires DateTime?
+
+  @@unique([token , email])
+}
